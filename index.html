@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zodwa Portia Nhlabathi — Data Card Machine Operator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0f1b2d;
+    --panel:#16273d;
+    --panel-alt:#1c3049;
+    --line:#2b3f5a;
+    --text:#eef1f4;
+    --muted:#93a4bb;
+    --gold:#d4af6a;
+    --silver:#c9d3dc;
+    --display:'Space Grotesk', sans-serif;
+    --mono:'IBM Plex Mono', monospace;
+    --sans:'Inter', sans-serif;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background:var(--navy);
+    color:var(--text);
+    font-family:var(--sans);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--gold);}
+  main{max-width:900px; margin:0 auto; padding:0 20px 60px;}
+
+  .card-wrap{padding:56px 0 40px;}
+  .id-card{
+    background:linear-gradient(135deg, var(--panel-alt) 0%, var(--panel) 100%);
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:32px 36px;
+    position:relative;
+    overflow:hidden;
+    box-shadow:0 20px 50px -20px rgba(0,0,0,.6);
+  }
+  .id-card::before{
+    content:'';
+    position:absolute; top:-40%; right:-10%;
+    width:280px; height:280px; border-radius:50%;
+    background:radial-gradient(circle, rgba(212,175,106,.10), transparent 70%);
+  }
+  .id-card-top{display:flex; justify-content:space-between; align-items:flex-start; gap:20px; flex-wrap:wrap;}
+  .chip{
+    width:46px; height:34px; border-radius:6px;
+    background:linear-gradient(135deg, #e8cd93, var(--gold));
+    position:relative;
+  }
+  .chip::before, .chip::after{
+    content:''; position:absolute; background:rgba(15,27,45,.35);
+  }
+  .chip::before{top:8px; left:0; right:0; height:1.5px;}
+  .chip::after{left:15px; top:0; bottom:0; width:1.5px;}
+  .card-label{font-family:var(--mono); font-size:.68rem; color:var(--muted); letter-spacing:.12em; text-transform:uppercase;}
+  .signal{display:flex; gap:3px; align-items:flex-end; height:16px;}
+  .signal span{width:3px; background:var(--gold); border-radius:1px; opacity:.85;}
+  .signal span:nth-child(1){height:6px;} .signal span:nth-child(2){height:10px;}
+  .signal span:nth-child(3){height:14px;} .signal span:nth-child(4){height:16px;}
+
+  .id-card h1{
+    font-family:var(--display); font-weight:700; letter-spacing:.02em;
+    font-size:clamp(1.5rem, 4vw, 2.15rem); margin:22px 0 4px; color:#fff;
+  }
+  .id-card .role{font-family:var(--mono); font-size:.85rem; color:var(--gold); letter-spacing:.03em;}
+  .id-card .meta-row{
+    margin-top:22px; padding-top:18px; border-top:1px dashed var(--line);
+    display:flex; flex-wrap:wrap; gap:24px; font-family:var(--mono); font-size:.78rem; color:var(--silver);
+  }
+  .id-card .meta-row div span{display:block; color:var(--muted); font-size:.68rem; text-transform:uppercase; letter-spacing:.08em; margin-bottom:3px;}
+
+  section{padding:38px 0; border-bottom:1px solid var(--line);}
+  section:last-of-type{border-bottom:none;}
+  .eyebrow{font-family:var(--mono); font-size:.72rem; color:var(--gold); letter-spacing:.14em; text-transform:uppercase; margin-bottom:10px;}
+  h2{font-family:var(--display); font-size:1.4rem; font-weight:600; margin-bottom:18px; color:#fff;}
+
+  .summary p{color:var(--silver); max-width:70ch;}
+
+  .spec-grid{display:grid; grid-template-columns:1fr 1fr; gap:0; border:1px solid var(--line); border-radius:10px; overflow:hidden;}
+  .spec-col{padding:20px 22px;}
+  .spec-col:first-child{border-right:1px solid var(--line); background:var(--panel);}
+  .spec-col:last-child{background:var(--panel-alt);}
+  .spec-col h3{font-family:var(--mono); font-size:.72rem; color:var(--muted); text-transform:uppercase; letter-spacing:.08em; margin-bottom:12px;}
+  .spec-col ul{list-style:none;}
+  .spec-col li{
+    padding:7px 0; font-size:.92rem; border-top:1px solid var(--line); color:var(--text);
+  }
+  .spec-col li:first-child{border-top:none;}
+  .spec-col li::before{content:'▸ '; color:var(--gold);}
+
+  .job{padding:22px 0; border-top:1px solid var(--line);}
+  .job:first-child{border-top:none; padding-top:4px;}
+  .job-head{display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:8px; margin-bottom:4px;}
+  .job-head h3{font-family:var(--display); font-size:1.08rem; font-weight:600; color:#fff;}
+  .job-head .dates{font-family:var(--mono); font-size:.76rem; color:var(--gold); white-space:nowrap;}
+  .job .org{color:var(--muted); font-size:.9rem; margin-bottom:10px;}
+  .job ul{margin-left:1.1em; color:var(--silver); font-size:.94rem;}
+  .job li{margin-bottom:6px;}
+
+  .edu-row{
+    display:flex; justify-content:space-between; align-items:baseline;
+    padding:12px 0; border-top:1px solid var(--line); flex-wrap:wrap; gap:6px;
+  }
+  .edu-row:first-child{border-top:none;}
+  .edu-row .name{font-weight:600; color:#fff;}
+  .edu-row .inst{color:var(--muted); font-size:.88rem;}
+  .edu-row .yr{font-family:var(--mono); color:var(--gold); font-size:.8rem;}
+
+  .info-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:14px;}
+  .info-card{background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:16px 18px;}
+  .info-card .label{font-family:var(--mono); font-size:.68rem; color:var(--muted); text-transform:uppercase; letter-spacing:.08em; margin-bottom:6px;}
+  .info-card .value{font-size:.92rem; color:var(--text);}
+
+  footer{text-align:center; padding:30px 0 10px; color:var(--muted); font-family:var(--mono); font-size:.72rem;}
+
+  @media (max-width:640px){
+    .spec-grid{grid-template-columns:1fr;}
+    .spec-col:first-child{border-right:none; border-bottom:1px solid var(--line);}
+  }
+</style>
+</head>
+<body>
+<main>
+
+  <div class="card-wrap">
+    <div class="id-card">
+      <div class="id-card-top">
+        <div class="chip"></div>
+        <div style="text-align:right;">
+          <div class="card-label">Operator ID · Active</div>
+          <div class="signal" style="margin-top:6px; justify-content:flex-end;">
+            <span></span><span></span><span></span><span></span>
+          </div>
+        </div>
+      </div>
+      <h1>Zodwa Portia Nhlabathi</h1>
+      <p class="role">Data Card Machine Operator — Smart Card Personalization Specialist</p>
+      <div class="meta-row">
+        <div><span>Location</span>506/123 Spoobill Street, Moteong, Tembisa</div>
+        <div><span>Phone</span>+27 76 384 1263</div>
+        <div><span>Email</span>zodwanh21@gmail.com</div>
+        <div><span>Availability</span>Immediate</div>
+      </div>
+    </div>
+  </div>
+
+  <section class="summary">
+    <p class="eyebrow">Professional Summary</p>
+    <p>6-year veteran Data Card Machine Operator specialising in high-volume smart card production for
+      banking, telecom, and government sectors. Expert in DC &amp; MX6000 Maticar and MPR3000
+      personalization machines, with a 99.7% quality pass rate, 15% downtime reduction, and 10% material
+      cost savings. Holds 6 professional certifications including Occupational Health &amp; Safety (UCT)
+      and Operations Management (UCT). Combines technical precision with strong leadership, analytical
+      problem-solving, and a proven ability to train teams and optimise workflows in fast-paced production
+      environments.</p>
+  </section>
+
+  <section>
+    <p class="eyebrow">Core Competencies</p>
+    <h2>Skills &amp; Specifications</h2>
+    <div class="spec-grid">
+      <div class="spec-col">
+        <h3>Technical / Machine Skills</h3>
+        <ul>
+          <li>DC &amp; MX6000 Maticar Operation</li>
+          <li>MPR3000 Data Card Personalization</li>
+          <li>Machine Calibration &amp; Maintenance</li>
+          <li>Quality Control &amp; Assurance</li>
+          <li>Embedded Chip Programming</li>
+          <li>Microsoft Excel (Data Analysis)</li>
+          <li>Python (Basic Scripting)</li>
+          <li>Data Entry &amp; Production Reporting</li>
+        </ul>
+      </div>
+      <div class="spec-col">
+        <h3>Business &amp; Management Skills</h3>
+        <ul>
+          <li>Operations Management</li>
+          <li>Business Administration</li>
+          <li>Public Relations</li>
+          <li>Occupational Health &amp; Safety (OHS)</li>
+          <li>HR Administration &amp; Recruitment Support</li>
+          <li>Records &amp; File Management</li>
+          <li>Sales Promotion &amp; Customer Engagement</li>
+          <li>Team Training &amp; Mentoring</li>
+          <li>Logistics &amp; Fleet Coordination (Code 10)</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <p class="eyebrow">Professional Experience</p>
+    <h2>Work History</h2>
+
+    <div class="job">
+      <div class="job-head">
+        <h3>Data Card Machine Operator</h3>
+        <span class="dates">Jan 2017 – Present</span>
+      </div>
+      <div class="org">Gemalto Southern Africa</div>
+      <ul>
+        <li>Operate DC &amp; MX6000 Maticar and MPR3000 personalization machines, producing 500,000+ smart cards monthly for banking, telecommunications, and government clients.</li>
+        <li>Achieved a 99.7% quality pass rate by implementing rigorous visual and electronic inspections at every production stage, reducing customer returns by 40%.</li>
+        <li>Slashed machine downtime by 15% through proactive maintenance scheduling, daily calibration checks, and rapid troubleshooting protocols.</li>
+        <li>Reduced material waste by 10% via data-driven process improvements, saving the company approximately ZAR 250,000 annually.</li>
+        <li>Trained and mentored 3 new operators on machine setup, safety protocols, troubleshooting, and quality standards — cutting their ramp-up time by 30%.</li>
+        <li>Leveraged Excel dashboards to track daily output, identify bottlenecks, and present actionable weekly reports to senior management.</li>
+        <li>Applied Operations Management principles to restructure shift handovers, improving team efficiency by 12%.</li>
+        <li>Maintained 100% OHS compliance across all production shifts, with zero safety incidents during tenure.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-head">
+        <h3>HR Assistant (BEE Auditing)</h3>
+        <span class="dates">Jun 2019 – Dec 2019</span>
+      </div>
+      <div class="org">Audit BEE</div>
+      <ul>
+        <li>Spearheaded data verification for 1,200+ employee records during critical B-BBEE audit cycles, achieving 100% data accuracy.</li>
+        <li>Streamlined HR filing systems, reducing document retrieval time by 50% and ensuring full compliance with audit requirements.</li>
+        <li>Collaborated with external auditors to resolve 40+ record discrepancies, accelerating audit completion by 2 weeks.</li>
+        <li>Generated comprehensive audit reports and supported the HR team with recruitment documentation and onboarding tasks.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-head">
+        <h3>Records Clerk (6-Month Contract)</h3>
+        <span class="dates">Feb 2020 – Jul 2020</span>
+      </div>
+      <div class="org">Gemalto Southern Africa</div>
+      <ul>
+        <li>Managed 2,500+ physical and electronic files with meticulous accuracy, maintaining strict confidentiality and security protocols.</li>
+        <li>Designed and implemented a colour-coded indexing system that improved document retrieval speed by 60%.</li>
+        <li>Assisted with high-volume data entry, processing 150+ records daily with zero errors.</li>
+        <li>Provided general administrative support, including report generation and cross-departmental document coordination.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-head">
+        <h3>Sales Promoter</h3>
+        <span class="dates">Apr 2018 – Dec 2018</span>
+      </div>
+      <div class="org">Tradeway Promotion</div>
+      <ul>
+        <li>Promoted financial and telecom products across 15+ retail locations, engaging 200+ customers weekly.</li>
+        <li>Consistently exceeded daily sales targets by 20%, ranking in the top 5 performers nationally.</li>
+        <li>Delivered exceptional customer service, building brand loyalty and generating repeat business.</li>
+        <li>Provided feedback to management on customer preferences, contributing to targeted promotional strategies.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <p class="eyebrow">Education &amp; Certifications</p>
+    <h2>Qualifications</h2>
+    <div class="edu-list">
+      <div class="edu-row">
+        <div><div class="name">Occupational Health &amp; Safety</div><div class="inst">University of Cape Town (GetSmarter)</div></div>
+        <div class="yr">2026</div>
+      </div>
+      <div class="edu-row">
+        <div><div class="name">Operations Management</div><div class="inst">University of Cape Town (GetSmarter)</div></div>
+        <div class="yr">2025</div>
+      </div>
+      <div class="edu-row">
+        <div><div class="name">Management Course</div><div class="inst">APHISA</div></div>
+        <div class="yr">2022</div>
+      </div>
+      <div class="edu-row">
+        <div><div class="name">Business Administration</div><div class="inst">APHISA</div></div>
+        <div class="yr">2021</div>
+      </div>
+      <div class="edu-row">
+        <div><div class="name">N4 Public Relations</div><div class="inst">T. Denver Technical College</div></div>
+        <div class="yr">2018</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <p class="eyebrow">Additional Information</p>
+    <h2>Details</h2>
+    <div class="info-grid">
+      <div class="info-card">
+        <div class="label">Languages</div>
+        <div class="value">English, Zulu, Ndebele, Swati, Tswana (Fluent — Written &amp; Spoken)</div>
+      </div>
+      <div class="info-card">
+        <div class="label">Driver's License</div>
+        <div class="value">Code 10 (Own Transport) — willing to assist with logistics, deliveries, or fleet coordination as needed.</div>
+      </div>
+      <div class="info-card">
+        <div class="label">Availability</div>
+        <div class="value">Immediate</div>
+      </div>
+      <div class="info-card">
+        <div class="label">References</div>
+        <div class="value">Available upon request</div>
+      </div>
+    </div>
+  </section>
+
+</main>
+<footer>Personal CV website · Deployed via GitHub Pages</footer>
+</body>
+</html>
